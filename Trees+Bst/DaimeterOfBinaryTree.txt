@@ -1,0 +1,17 @@
+    int heightOfTree(Node* node,int &maxi){
+        if(node==NULL)return 0;
+     
+        int lh=heightOfTree(node->left,maxi);
+        int rh=heightOfTree(node->right,maxi);
+        maxi=max(maxi,lh+rh);
+        return max(lh,rh)+1;
+        
+    }
+    int diameter(Node* root) {
+        int maxi=0;
+        Node* node=root;
+        if(node->left==NULL&&node->right==NULL)return 0;
+       int no=heightOfTree(node,maxi);
+        if(maxi!=0)return maxi;
+        return no;
+    }
